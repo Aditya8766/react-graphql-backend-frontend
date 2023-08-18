@@ -9,18 +9,15 @@ const typeDefs = gql`
     title: String!
     completed: Boolean!
   }
-
   type Query {
     tasks: [Task]
   }
-
   type Mutation {
     createTask(title: String!): Task
     updateTask(id: ID!, title: String, completed: Boolean): Task
     deleteTask(id: ID!): Boolean
   }
 `;
-
 const resolvers = {
   Query: {
     tasks: () => tasks,
@@ -51,11 +48,8 @@ const resolvers = {
     },
   },
 };
-
 const app = express();
-
 const server = new ApolloServer({ typeDefs, resolvers });
-
 async function startServer() {
   await server.start();
 
@@ -67,6 +61,5 @@ async function startServer() {
     console.log(`Server is running on port ${PORT}`);
   });
 }
-
 startServer();
 
